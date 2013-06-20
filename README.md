@@ -16,3 +16,6 @@ If you wish to change the default javadoc template go to the IDE settings and mo
 Generator. You can use the full velocity syntax.
 
 Note, you need at least version 11.1.2 ultimate or community edition, versions below will not work!
+
+=============
+make it works for 12.1.3

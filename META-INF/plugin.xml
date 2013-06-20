@@ -37,7 +37,7 @@
     <vendor url="https://github.com/bpark/gen-javadoc" email="burt.parkers@googlemail.com">Burt Parkers</vendor>
 
     <!-- minimum IDEA build number with which the plugin is compatible -->
-    <idea-version since-build="117.418"/>
+    <idea-version since-build="129.451"/>
 
     <actions>
         <group id="docplugin.group" text="Generate JavaDoc" description="Group of Javascript generators" popup="true">

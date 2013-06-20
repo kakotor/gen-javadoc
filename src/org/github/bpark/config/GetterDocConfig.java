@@ -49,14 +49,10 @@ public class GetterDocConfig extends AbstractDocConfig {
 
     /** Constructor, loads the saved template or uses the default value. */
     public GetterDocConfig() {
-        try {
             PropertiesComponent.getInstance().loadFields(this);
-            if (template == null || template.isEmpty()) {
+            if (template == null || template.isEmpty() || "null".equalsIgnoreCase(template)) {
                 template = DEFAULT_TEMPLATE;
             }
-        } catch (IllegalAccessException e) {
-            template = DEFAULT_TEMPLATE;
-        }
     }
 
     @NotNull
@@ -73,15 +69,12 @@ public class GetterDocConfig extends AbstractDocConfig {
 
     @Override
     public void save(@NotNull String template) {
-        try {
             this.template = template;
             //AsyncResult<DataContext> dataContextFromFocus = DataManager.getInstance().getDataContextFromFocus();
             //Project project = DataKeys.PROJECT.getData(dataContextFromFocus.getResult());
             //PropertiesComponent.getInstance(project).saveFields(this);
             PropertiesComponent.getInstance().saveFields(this);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @NotNull

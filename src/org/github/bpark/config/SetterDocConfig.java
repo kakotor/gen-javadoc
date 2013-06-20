@@ -51,14 +51,11 @@ public class SetterDocConfig extends AbstractDocConfig {
 
     /** Constructor, loads the saved template or uses the default value. */
     public SetterDocConfig() {
-        try {
             PropertiesComponent.getInstance().loadFields(this);
-            if (template == null || template.isEmpty()) {
+            if (template == null || template.isEmpty()|| "null".equalsIgnoreCase(template)) {
                 template = DEFAULT_TEMPLATE;
             }
-        } catch (IllegalAccessException e) {
-            template = DEFAULT_TEMPLATE;
-        }
+
     }
 
     @NotNull
@@ -75,12 +72,9 @@ public class SetterDocConfig extends AbstractDocConfig {
 
     @Override
     public void save(@NotNull String template) {
-        try {
             this.template = template;
             PropertiesComponent.getInstance().saveFields(this);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @NotNull
