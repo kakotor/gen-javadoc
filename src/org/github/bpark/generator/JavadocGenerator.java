@@ -119,10 +119,15 @@ public class JavadocGenerator {
         VelocityContext velocityContext = new VelocityContext();
 
         String propertyName = PropertyUtil.getPropertyName(psiMethod);
-        String text = PropertyUtil.findPropertyFieldByMember(psiMethod).getDocComment().getText();
-        if(null != text || text.isEmpty() || "null".equals(text.trim())){
-            propertyName += text.replaceAll("/\\*\\*\\s*(.*?)\\s*\\*/"," ($1)");
+
+        String text = "";
+        try {
+            text = PropertyUtil.findPropertyFieldByMember(psiMethod).getDocComment().getText();
+        } catch (Throwable e) {
+
         }
+
+        propertyName += text.replaceAll("/\\*\\*\\s*(.*?)\\s*\\*/"," ($1)");
         velocityContext.put("field", propertyName);
         velocityContext.put("field_type", PropertyUtil.getPropertyType(psiMethod));
 
